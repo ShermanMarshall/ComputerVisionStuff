@@ -23,5 +23,5 @@ while num != 27:
 	a, b = cam.read()
 
 destroyAllWindows()
-cam.close()
+cam.release()
 
