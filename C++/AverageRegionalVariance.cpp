@@ -72,7 +72,6 @@ void* thread_func(void* arg) {
 			if (!(iterations > iterate)) {
 				break;
 			}
-			//printf("Diffs %i\tRed: %i, Green: %i, Blue: %i\n", iterate, redSet[partition->num][iterate], [partition->num][iterate], blueSet[partition->num][iterate]);
 		}
 
 		printf("Diffs %i\tRed: %i, Green: %i, Blue: %i\n", iterate, redSet[partition->num][iterate], greenSet[partition->num][iterate], blueSet[partition->num][iterate]);
@@ -158,7 +157,6 @@ int main(int argc, char** argv) {
 			blueSet[0][iterate] += abs(partitions[0]->currentBlue[x] - partitions[0]->currentBlue[x]);
 			
 			partitions[0]->currentRed[x] = partitions[0]->currentGreen[x] = partitions[0]->currentBlue[x] = 0;
-			//printf("Diffs %i\tRed: %i, Green: %i, Blue: %i\n", iterate, redSet[0][iterate], greenSet[0][iterate], blueSet[0][iterate]);
 		}
 		cap >> frame;
 		
