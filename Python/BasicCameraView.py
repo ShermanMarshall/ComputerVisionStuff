@@ -3,7 +3,9 @@ cam = VideoCapture(0)
 a, b = cam.read()
 num = 0;
 
-while num != 27:
+numESC = 27
+
+while num != numESC:
 	imshow('Your Camera', b)
 	num = waitKey(1)
 	a, b = cam.read();
