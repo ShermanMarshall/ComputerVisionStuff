@@ -23,7 +23,7 @@ public class Quantize extends JFrame {
 		file = files[(int) (Math.random() * files.length)];
 	} while (file.getName().charAt(0) == '.');
 
-	System.out.println("Input the number of bits used to represent the image: ");
+	System.out.println("Input the number of bits used to represent each color component of each pixel in the image: ");
 	int quanta = input.nextInt();
 	if ((quanta < 0) || (quanta > 8))
 		throw new NumberFormatException("Number of bits must be 0 < x < 8");
