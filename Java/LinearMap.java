@@ -22,9 +22,11 @@ public class LinearMap extends JFrame {
 				f = files[(int) (Math.random() * files.length)];
 			} while (f.getName().charAt(0) == '.');
 			bi = ImageIO.read(f);
-		} catch (IOException e) { System.out.println(e.getMessage()); }
+		} catch (IOException e) { 
+			System.out.println(e.getMessage()); 
+		}
 		setBounds(0, 0, bi.getWidth(), bi.getHeight());
-		for (int y = 0; y < bi.getHeight(); y++) 
+		for (int y = 0; y < bi.getHeight(); y++) {
 			for (int x = 0; x < bi.getWidth(); x++) {
 				int color = bi.getRGB(x, y), tmp = 0;
 				byte component;
@@ -38,6 +40,7 @@ public class LinearMap extends JFrame {
 				}
 				bi.setRGB(x, y, tmp);
 			}
+		}
 		ImageIcon icon = new ImageIcon(bi);
 		add(new JLabel(icon));
 		setVisible(true);
@@ -50,7 +53,9 @@ public class LinearMap extends JFrame {
 		} else {
 			try {
 				new LinearMap(Float.parseFloat(args[0]), Integer.parseInt(args[1]));
-			} catch (NumberFormatException nfe) { System.out.println(nfe.getMessage()); }
+			} catch (NumberFormatException nfe) { 
+				System.out.println(nfe.getMessage()); 
+			}
 		}
 	}
 }

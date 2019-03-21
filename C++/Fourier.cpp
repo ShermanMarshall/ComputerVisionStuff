@@ -21,12 +21,12 @@ int main(int argc, char ** argv)
 	Mat I, frame;
 do {
 	
-    //I = imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
+        //I = imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
 	cap >> frame;
 
 	cvtColor(frame, I, COLOR_BGR2GRAY);
-	GaussianBlur(I, I, Size(7,7), 1.5, 1.5);
-	Canny(I, I, 0, 20, 3);
+	//GaussianBlur(I, I, Size(7,7), 1.5, 1.5);
+	//Canny(I, I, 0, 20, 3);
 
     if( I.empty())
         return -1;

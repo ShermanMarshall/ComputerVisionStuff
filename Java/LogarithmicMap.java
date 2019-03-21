@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class LogarithmicMap extends JFrame {
-	BufferedImage bi, map;
-	int[] table = new int[256];
+	private BufferedImage bi, map;
+	private int[] table = new int[256];
 
 	LogarithmicMap () {
 		super("Logarithmic Map");
@@ -20,18 +20,20 @@ public class LogarithmicMap extends JFrame {
 				f = files[(int) (Math.random() * files.length)];
 			} while (f.getName().charAt(0) == '.');
 			bi = ImageIO.read(f);
-		} catch (IOException e) { System.out.println(e.getMessage()); }
+		} catch (IOException e) { 
+			System.out.println(e.getMessage()); 
+		}
 		
 		map = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
 		setBounds(0, 0, bi.getWidth(), bi.getHeight());
 
 		initTable();
 
-		for (int y = 0; y < bi.getHeight(); y++) 
+		for (int y = 0; y < bi.getHeight(); y++) {
 			for (int x = 0; x < bi.getWidth(); x++) {
 				int color = bi.getRGB(x, y), tmp = 0;
 				byte component;
-				for (int z = 0, q = 0, pow = 0; z < 3; z++) {
+				for (int z = 0, q = 0; z < 3; z++) {
 					component = (byte) (color & 0xFF);
 					q = (component > -1) ? component : (256 - (component * -1));
 					q = table[q];
@@ -41,6 +43,7 @@ public class LogarithmicMap extends JFrame {
 				}
 				map.setRGB(x, y, tmp);
 			}
+		}
 
 		ImageIcon icon = new ImageIcon(bi);
 		add(new JLabel(icon));

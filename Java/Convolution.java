@@ -15,15 +15,20 @@ public class Convolution extends JFrame {
     Kernel kernel;
     float[] data = new float[9];
 
-    public Convolution() throws IOException {
+    public Convolution(String fname) throws IOException {
         super("Convolution");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	File[] files = new File("Images").listFiles();
 	File f;
-	do {
-		f = files[(int) (Math.random() * files.length)];
-	} while (f.getName().charAt(0) == '.');
+	if (fname == null) {
+		do {
+			f = files[(int) (Math.random() * files.length)];
+		} while (f.getName().charAt(0) == '.');
+	} else {
+		f = new File(fname);
+	}
+
 	image = ImageIO.read(f);
 	setBounds(100, 0, image.getWidth(), image.getHeight());
 	newImg = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
@@ -32,8 +37,10 @@ public class Convolution extends JFrame {
 	//has proven to be an enormous nuisance
 	for (int x = 0; x < data.length; x++)
 		data[x] = 0.125f;
-	
+
+	data[4] = 0.0f;
 	data[4] = 1.0f;
+
 	kernel = new Kernel(3, 3, data);
 	ConvolveOp convolution = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
 	newImg = convolution.filter(image, newImg);
@@ -48,6 +55,6 @@ public class Convolution extends JFrame {
     }
 
     public static void main (String[] args) throws IOException {
-	new Convolution();
+	new Convolution(args.length > 0 ? args[0] : null);
     }
 }
