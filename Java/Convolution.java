@@ -9,11 +9,11 @@ import java.awt.image.Kernel;
 import java.awt.image.ConvolveOp;
 
 public class Convolution extends JFrame {
-    ImageIcon icon;
-    JLabel display;
-    BufferedImage image, newImg;
-    Kernel kernel;
-    float[] data = new float[9];
+    private ImageIcon icon;
+    private JLabel display;
+    private BufferedImage image, newImg;
+    private Kernel kernel;
+    private float[] data = new float[9];
 
     public Convolution(String fname) throws IOException {
         super("Convolution");
